@@ -1,0 +1,37 @@
+<div class="container">
+    <form #registerForm="ngForm" class="form" (ngSubmit)="register()">
+        <img class="logo" src="/assets/images/logo.png" alt="">
+        <div class="register">Register</div>
+        <div class="sub-text">to acquire awesome bots</div>
+
+        <input name="firstName" required #firstName="ngModel" type="text" [(ngModel)]="registerCredentials.firstName" required placeholder="FirstName">
+        <em class="error" *ngIf="firstName.invalid && firstName.touched">FirstName is required</em>
+
+        <input name="lastName" required #lastName="ngModel" [(ngModel)]="registerCredentials.lastName" type="text" placeholder="LastName">
+        <em class="error" *ngIf="lastName.invalid && lastName.touched">LastName is invalid</em>
+
+        <input name="email" required #email="ngModel" [(ngModel)]="registerCredentials.email" type="text" placeholder="E-mail">
+        <em class="error" *ngIf="email.invalid && email.touched">Email is required</em>
+
+        <input name="phoneNumber" required #phoneNumber="ngModel" [(ngModel)]="registerCredentials.phoneNumber" type="number" placeholder="Mobile Number">
+        <em class="error" *ngIf="phoneNumber.invalid && phoneNumber.touched">PhoneNumber is required</em>
+        <div>
+            {{ registerCredentials.phoneNumber }}
+        </div>
+        <div>
+            {{ getType(registerCredentials.phoneNumber) }}
+        </div>
+
+        <input name="password" required #password="ngModel" [(ngModel)]="registerCredentials.password" minlength="8" type="password" placeholder="Password">
+        <em class="error" *ngIf="password.invalid && password.touched">Password is required</em>
+
+        <div class="button" type="submit">
+            <button type="submit" [disabled]="registerForm.form.invalid">Register</button>
+        </div>
+        
+        <div *ngIf="successMessage"> 
+            {{ successMessage }}
+        </div>
+
+    </form>
+</div>
