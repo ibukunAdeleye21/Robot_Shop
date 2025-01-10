@@ -15,12 +15,6 @@
 
         <input name="phoneNumber" required #phoneNumber="ngModel" [(ngModel)]="registerCredentials.phoneNumber" type="number" placeholder="Mobile Number">
         <em class="error" *ngIf="phoneNumber.invalid && phoneNumber.touched">PhoneNumber is required</em>
-        <div>
-            {{ registerCredentials.phoneNumber }}
-        </div>
-        <div>
-            {{ getType(registerCredentials.phoneNumber) }}
-        </div>
 
         <input name="password" required #password="ngModel" [(ngModel)]="registerCredentials.password" minlength="8" type="password" placeholder="Password">
         <em class="error" *ngIf="password.invalid && password.touched">Password is required</em>
